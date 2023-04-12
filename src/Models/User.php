@@ -38,6 +38,11 @@ class User
         return $this->fullname;
     }
 
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
     public function fill($user)
     {
         [
@@ -187,5 +192,35 @@ class User
             }
         }
         return false;
+    }
+
+    public function updateFullName($fullname)
+    {
+        $statement = $this->pdo->prepare('UPDATE users SET fullname = :fullname WHERE id = :id');
+        $statement->execute([
+            'fullname' => $fullname,
+            'id' => $this->id
+        ]);
+        return $this;
+    }
+
+    public function updatePhone($phone)
+    {
+        $statement = $this->pdo->prepare('UPDATE users SET phone = :phone WHERE id = :id');
+        $statement->execute([
+            'phone' => $phone,
+            'id' => $this->id
+        ]);
+        return $this;
+    }
+
+    public function updatePasswordHash($password_hash)
+    {
+        $statement = $this->pdo->prepare('UPDATE users SET password_hash = :password_hash WHERE id = :id');
+        $statement->execute([
+            'password_hash' => $password_hash,
+            'id' => $this->id
+        ]);
+        return $this;
     }
 }
