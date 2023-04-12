@@ -2,7 +2,7 @@
 
 namespace MVC\Controllers;
 
-class TeaPage extends \MVC\Core\Controller
+class Tea extends \MVC\Core\Controller
 {
     function Show()
     {

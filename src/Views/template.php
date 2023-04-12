@@ -43,12 +43,11 @@
                                     thiệu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?= $data['page'] == 'TeaPage' ? 'active' : '' ?>"
-                                    href="/TeaPage">Trà</a>
+                                <a class="nav-link <?= $data['page'] == 'Tea' ? 'active' : '' ?>" href="/Tea">Trà</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?= $data['page'] == 'CafePage' ? 'active' : '' ?>"
-                                    href="/CafePage">Cà phê</a>
+                                <a class="nav-link <?= $data['page'] == 'Cafe' ? 'active' : '' ?>" href="/Cafe">Cà
+                                    phê</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link <?= $data['page'] == 'Contact' ? 'active' : '' ?>"

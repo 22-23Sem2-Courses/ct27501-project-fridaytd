@@ -2,7 +2,7 @@
 
 namespace MVC\Controllers;
 
-class CafePage extends \MVC\Core\Controller
+class Cafe extends \MVC\Core\Controller
 {
     function Show()
     {
