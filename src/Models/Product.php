@@ -99,7 +99,9 @@ class Product
         $stmt = $this->pdo->prepare("SELECT * FROM {$this->table_name} WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $product = new Product();
+        $product->fillFromDB($stmt->fetch(PDO::FETCH_ASSOC));
+        return $product;
     }
 
     public function addProduct($name, $type, $description, $price, $image_path)

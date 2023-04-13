@@ -60,7 +60,7 @@
         <label for="price">Price:</label><br>
         <input type="number" id="price" name="price"><br><br>
         <label for="image_path">Image:</label><br>
-        <input type="file" id="image_path" name="image_path"><br><br>
+        <input type="text" id="image_path" name="image_path"><br><br>
         <input type="submit" value="Add Product">
     </form>
 </div>
