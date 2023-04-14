@@ -1,6 +1,7 @@
 <?php
 
 namespace MVC\Controllers;
+
 use MVC\Models\Product;
 
 class Admin extends \MVC\Core\Controller
@@ -14,11 +15,22 @@ class Admin extends \MVC\Core\Controller
         $this->view('dashboard', []);
     }
 
-    function addProduct($name, $type, $price, $des, $image_path) {
-        $this->product = new Product();
-        $this->product->addProduct($name, $type, $price, $des, $image_path);
-        echo(1);
+    function ShowF($page)
+    {
+        
+
+        $this->view('dashboard', [
+            'page' => $page
+        ]);
     }
 
-	
+
+    function addProduct($name, $type, $price, $des, $image_path)
+    {
+        $this->product = new Product();
+        $this->product->addProduct($name, $type, $price, $des, $image_path);
+        echo (1);
+    }
+
+
 }
