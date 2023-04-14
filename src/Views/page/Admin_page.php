@@ -50,19 +50,41 @@
 </div>
 
 <div id="AddProduct" class="tabcontent">
-    <form method="post" action="add_product.php" enctype="multipart/form-data">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="type">Type:</label><br>
-        <input type="text" id="type" name="type"><br><br>
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description"></textarea><br><br>
-        <label for="price">Price:</label><br>
-        <input type="number" id="price" name="price"><br><br>
-        <label for="image_path">Image:</label><br>
-        <input type="text" id="image_path" name="image_path"><br><br>
-        <input type="submit" value="Add Product">
+    <form action='' class='form'>
+        <p class='field required'>
+            <label class='label required' for='name'>TÊN SẢN PHẨM</label>
+            <input class='text-input' id='name' name='name' required type='text' placeholder='Ô Long'>
+        </p>
+        <div class='field'>
+            <label class='label'>Phân loại</label>
+            <ul class='options'>
+                <li class='option'>
+                    <input class='option-input' id='option-0' name='option' type='radio' value='tea'>
+                    <label class='option-label' for='option-0'>Trà</label>
+                </li>
+                <li class='option'>
+                    <input class='option-input' id='option-1' name='option' type='radio' value='Coffee'>
+                    <label class='option-label' for='option-1'>Cafe</label>
+                </li>
+                <li class='option'>
+                    <input class='option-input' id='option-2' name='option' type='radio' value='Other'>
+                    <label class='option-label' for='option-2'>Khác</label>
+                </li>
+            </ul>
+        </div>
+        <p class='field'>
+            <label class='label' for='about'>Mô tả</label>
+            <textarea class='textarea' cols='50' id='about' name='description' rows='4'></textarea>
+        </p>
+        <p class='field half'>
+            <label class='label' for='price'>Giá</label>
+            <input class='number' id='price' name='price' type='phone'>
+        </p>
+        <p class='field half'>
+            <input class='button' type='submit' value='Send'>
+        </p>
     </form>
+
 </div>
 
 <div id="Tokyo" class="tabcontent">

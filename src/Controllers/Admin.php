@@ -14,9 +14,9 @@ class Admin extends \MVC\Core\Controller
         $this->view('dashboard', []);
     }
 
-    function addProduct() {
+    function addProduct($name, $type, $price, $des, $image_path) {
         $this->product = new Product();
-        $this->product->addProduct('O Long', 'tea', 'mot loai tra ngon', 50, 'olong.png');
+        $this->product->addProduct($name, $type, $price, $des, $image_path);
         echo(1);
     }
 
