@@ -112,6 +112,7 @@ class Product
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':image_path', $image_path);
+        var_dump(2);
         return $stmt->execute();
     }
 

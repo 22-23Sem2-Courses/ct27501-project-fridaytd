@@ -373,11 +373,7 @@
         }
 
         #sidebarMenu {
-            padding-bottom: 50px;
-        }
-
-        #sidebar-padtop {
-            padding-top:50px ;
+            padding-top: 80px;
         }
     </style>
 
@@ -414,38 +410,38 @@
                 <div class="position-sticky pt-3 sidebar-sticky" id="sidebar-padtop">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
+                            <a class="nav-link active" aria-current="page" href="#" id="home">
                                 <span data-feather="home" class="align-text-bottom"></span>
-                                Profile
+                                Home
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="#" id="order">
                                 <span data-feather="file" class="align-text-bottom"></span>
                                 Orders
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                            <a class="nav-link" href="#" id="add-product">
+                                <span data-feather="shopping-cart" class="align-text-bottom" ></span>
                                 Products
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <span data-feather="users" class="align-text-bottom"></span>
+                                <span data-feather=" users" class="align-text-bottom"></span>
                                 Customers
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                                <span data-feather=" bar-chart-2" class="align-text-bottom"></span>
                                 Reports
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <span data-feather="layers" class="align-text-bottom"></span>
+                                <span data-feather=" layers" class="align-text-bottom"></span>
                                 Integrations
                             </a>
                         </li>
@@ -455,47 +451,11 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <?php if (file_exists('../src/Views/page/' . $data['page'] . '_page.php')) {
-
-                    include '../src/Views/page/' . $data['page'] . '_page.php';
+                <?php if (file_exists('../src/Views/admin/' . $data['page'] . '.php')) {
+                    include '../src/Views/admin/' . $data['page'] . '.php';
                 }
                 ?>
-                <div id="padtop">
-                    <form action='' class='form'>
-                        <p class='field required'>
-                            <label class='label required' for='name'>TÊN SẢN PHẨM</label>
-                            <input class='text-input' id='name' name='name' required type='text' placeholder='Ô Long'>
-                        </p>
-                        <div class='field'>
-                            <label class='label'>Phân loại</label>
-                            <ul class='options'>
-                                <li class='option'>
-                                    <input class='option-input' id='option-0' name='option' type='radio' value='tea'>
-                                    <label class='option-label' for='option-0'>Trà</label>
-                                </li>
-                                <li class='option'>
-                                    <input class='option-input' id='option-1' name='option' type='radio' value='Coffee'>
-                                    <label class='option-label' for='option-1'>Cafe</label>
-                                </li>
-                                <li class='option'>
-                                    <input class='option-input' id='option-2' name='option' type='radio' value='Other'>
-                                    <label class='option-label' for='option-2'>Khác</label>
-                                </li>
-                            </ul>
-                        </div>
-                        <p class='field'>
-                            <label class='label' for='about'>Mô tả</label>
-                            <textarea class='textarea' cols='50' id='about' name='description' rows='4'></textarea>
-                        </p>
-                        <p class='field half'>
-                            <label class='label' for='price'>Giá</label>
-                            <input class='number' id='price' name='price' type='phone'>
-                        </p>
-                        <p class='field half'>
-                            <input class='button' type='submit' value='Send'>
-                        </p>
-                    </form>
-                </div>
+
 
             </main>
         </div>
@@ -516,7 +476,23 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
         crossorigin="anonymous"></script>
-    <script src="/js/dashboard.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+    <script type='text/javascript'>
+        let baseURL = location.host + '/admin';
+        jQuery(document).ready(function ($) {
+            $("#home").click(function (event) {
+                location.href = '/admin';
+            });
+            $("#add-product").click(function (event) {
+                location.href = '/admin/ShowF/AddProduct';
+            });
+            $("#order").click(function (event) {
+                location.href = '/admin/ShowF/Order';
+            });
+        });
+    </script>
 </body>
 
 </html>
