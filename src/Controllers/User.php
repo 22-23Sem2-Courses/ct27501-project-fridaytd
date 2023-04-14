@@ -17,7 +17,7 @@ class User extends \MVC\Core\Controller
         $this->checkAuthor();
         $user = $this->model('User');
         $user->findById($_SESSION['user_id']);
-        $this->view('dashboard', [
+        $this->view('user', [
             'page' => 'Profile',
             'username' => $user->getUserName(),
             'fullname' => $user->getFullName(),
@@ -31,7 +31,7 @@ class User extends \MVC\Core\Controller
         $user = $this->model('User');
         $user->findById($_SESSION['user_id']);
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $this->view('dashboard', [
+            $this->view('user', [
                 'page' => 'ChangeInfor',
                 'username' => $user->getUserName(),
                 'fullname' => $user->getFullName(),
@@ -49,7 +49,7 @@ class User extends \MVC\Core\Controller
                 unset($errors['phone']);
             }
             if (!empty($errors)) {
-                $this->view('dashboard', [
+                $this->view('user', [
                     'page' => 'ChangeInfor',
                     'errors' => $errors,
                     'username' => $user->getUserName(),
@@ -71,7 +71,7 @@ class User extends \MVC\Core\Controller
         $user = $this->model('User');
         $user->findById($_SESSION['user_id']);
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $this->view('dashboard', [
+            $this->view('user', [
                 'page' => 'ChangePassword'
             ]);
         } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -87,7 +87,7 @@ class User extends \MVC\Core\Controller
                 $errors['old_password'] = 'Mật khẩu cũ không đúng';
             }
             if (!empty($errors)) {
-                $this->view('dashboard', [
+                $this->view('user', [
                     'page' => 'ChangePassword',
                     'errors' => $errors
                 ]);
