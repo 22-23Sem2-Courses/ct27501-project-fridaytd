@@ -13,6 +13,7 @@
     <title>
         <?= $data['page'] ?>
     </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -55,6 +56,7 @@
                             </li>
                         </ul>
                         <div>
+
                             <?php
                             if (isset($_SESSION['islogin'])) {
                                 include '../src/Views/partition/islogin.php';
@@ -62,6 +64,8 @@
                                 include '../src/Views/partition/islogout.php';
                             }
                             ?>
+                            <a href="/Cart" class="btn mt-0 p-0" style="color: #0C713D; font-size: 30px"><i
+                                    class="fas fa-shopping-cart"></i></a>
                         </div>
                     </div>
                 </div>
