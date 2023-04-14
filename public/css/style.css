@@ -1,6 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
 
 html {
@@ -99,6 +100,33 @@ h2 {
 }
 
 /* end form */
+
+/* start product */
+.card {
+    border: 1px solid #fff;
+}
+
+.card h5 {
+    text-transform: capitalize;
+}
+
+.card:hover {
+    border: 1px solid #000;
+}
+
+.card a {
+    background-color: #fff;
+    color: #0C713D;
+    border-color: #0C713D
+}
+
+.card a:hover {
+    background-color: #0C713D;
+    color: #fff;
+    border-color: #0C713D
+}
+
+/* end product */
 
 
 footer .top-footer {

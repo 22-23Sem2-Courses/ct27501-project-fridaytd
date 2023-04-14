@@ -91,7 +91,7 @@
         </div>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" style="background-color: #0C713D;" href="/Logout">Sign out</a>
+                <a class="nav-link px-3" style="background-color: #0C713D;" href="/Logout">Đăng xuất</a>
             </div>
         </div>
     </header>
