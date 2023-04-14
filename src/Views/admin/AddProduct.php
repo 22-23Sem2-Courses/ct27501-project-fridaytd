@@ -1,5 +1,5 @@
 <div id="padtop">
-    <form action='/admin/fillFromForm' method="POST" class='form'>
+    <form action='/Admin/fillFromForm' method="POST" class='form'>
         <p class='field required'>
             <label class='label required' for='name'>TÊN SẢN PHẨM</label>
             <input class='text-input' id='name' name='name' required type='text' placeholder='Ô Long'>
@@ -8,15 +8,15 @@
             <label class='label'>Phân loại</label>
             <ul class='options'>
                 <li class='option'>
-                    <input class='option-input' id='option-0' name='option' type='radio' value='tea'>
+                    <input class='option-input' id='option-0' name='type' type='radio' value='tea'>
                     <label class='option-label' for='option-0'>Trà</label>
                 </li>
                 <li class='option'>
-                    <input class='option-input' id='option-1' name='option' type='radio' value='Coffee'>
+                    <input class='option-input' id='option-1' name='type' type='radio' value='Coffee'>
                     <label class='option-label' for='option-1'>Cafe</label>
                 </li>
                 <li class='option'>
-                    <input class='option-input' id='option-2' name='option' type='radio' value='Other'>
+                    <input class='option-input' id='option-2' name='type' type='radio' value='Other'>
                     <label class='option-label' for='option-2'>Khác</label>
                 </li>
             </ul>
@@ -30,8 +30,8 @@
             <input class='number' id='price' name='price' type='phone'>
         </p>
         <p class='field half'>
-            <label class='label' for='image-path'>Image Path</label>
-            <input class='text-input' id='image-path' name='price' type='text'>
+            <label class='label' for='image_path'>Image Path</label>
+            <input class='text-input' id='image_path' name='image_path' type='text'>
         </p>
         <p class='field half'>
             <button onclick="showImage()" type='button'>Show Image</button>
