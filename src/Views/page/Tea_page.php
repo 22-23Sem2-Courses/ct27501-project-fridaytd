@@ -1,3 +1,16 @@
+<script>
+    function formatMoney(money) {
+        if (typeof money === 'number' && Number.isInteger(money)) {
+            money = money.toString()
+        }
+        pos = 3;
+        while (pos < money.length) {
+            money = money.slice(0, -pos) + '.' + money.slice(-pos, money.length)
+            pos += 4
+        }
+        return money
+    }
+</script>
 <div>
     <img class="img-fluid w-100" src="/images/Tea/teapage.jpg" alt="banner">
 </div>
@@ -49,8 +62,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn" style="background-color: #0C713D; color: #ffffffff">Thêm vào
+                    giỏ</button>
             </div>
         </div>
     </div>
@@ -58,12 +72,9 @@
 
 <script>
 
-    function formatMoney(money) {
-
-    }
-
     function total() {
-        $('#total').text(parseInt($('#priceModal').text().replace('.', '')) * parseInt($('#quantity').text()))
+        money = parseInt($('#priceModal').text().replace('.', '')) * parseInt($('#quantity').text())
+        $('#total').text(formatMoney(money))
     }
 
     function setValue(id) {
