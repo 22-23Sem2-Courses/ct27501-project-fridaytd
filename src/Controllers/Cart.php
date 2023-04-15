@@ -11,9 +11,4 @@ class Cart extends \MVC\Core\Controller
             'page' => 'Cart'
         ]);
     }
-
-    public function AddCart($id)
-    {
-        \MVC\Core\Router::redirect('/Tea#' . $id);
-    }
 }

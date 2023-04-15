@@ -66,11 +66,7 @@
                             ?>
                             <a href="/Cart" class="btn mt-0 p-0 position-relative"><i
                                     style="color: #0C713D; font-size: 30px" class="fas fa-shopping-cart"></i>
-                                <span
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    0
-                                    <span class="visually-hidden">unread messages</span>
-                                </span></a>
+                            </a>
                         </div>
                     </div>
                 </div>

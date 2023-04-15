@@ -1,104 +1,149 @@
-<style>
-    /* Cart table styles */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+<div class="container mt-5">
+    <section class="pt-5 pb-5">
+        <div class="container">
+            <div class="row w-100">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <h3 class="display-5 mb-2 text-center">Giỏ hàng</h3>
+                    <table id="shoppingCart" class="table table-condensed table-responsive">
+                        <thead>
+                            <tr>
+                                <th style="width:50%">Thức uống</th>
+                                <th style="width:12%">Giá</th>
+                                <th style="width:20%">Số lượng</th>
+                                <th style="width:16%"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="root">
 
-    th,
-    td {
-        text-align: left;
-        padding: 8px;
-    }
 
-    th {
-        background-color: #ddd;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    /* Checkout button styles */
-    button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #45a049;
-    }
-</style>
-
-<table>
-    <thead>
-        <tr>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-        </tr>
-    </thead>
-    <tbody id="cart-items">
-        <!-- Cart items will be added here using JavaScript -->
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="3">Total:</td>
-            <td id="cart-total"></td>
-        </tr>
-        <tr>
-            <td colspan="4"><button id="checkout-button">Checkout</button></td>
-        </tr>
-    </tfoot>
-</table>
+                        </tbody>
+                    </table>
+                    <div class="float-right text-right">
+                        <h4 style="text-transform: none ;">Tổng cộng:</h4>
+                        <h1 id="total"></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4 d-flex align-items-center">
+                <div class="col-sm-6 order-md-2 text-right">
+                    <a href="catalog.html" class="btn mb-4 btn-lg pl-5 pr-5"
+                        style="background-color: #0C713D; color: #ffffffff">Đặt hàng</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 
 <script>
-    // Sample cart data
-    const cartData = [
-        { name: "Product 1", price: 10.99, quantity: 2 },
-        { name: "Product 2", price: 19.99, quantity: 1 },
-        { name: "Product 3", price: 5.99, quantity: 3 },
-    ];
+    function formatMoney(money) {
+        if (typeof money === 'number' && Number.isInteger(money)) {
+            money = money.toString()
+        }
+        pos = 3;
+        while (pos < money.length) {
+            money = money.slice(0, -pos) + '.' + money.slice(-pos, money.length)
+            pos += 4
+        }
+        return money
+    }
 
-    // Get cart items and total
-    const cartItemsEl = document.getElementById("cart-items");
-    const cartTotalEl = document.getElementById("cart-total");
-    let cartTotal = 0;
+    function increment(id) {
+        const quantityInput = $(`#quantity${id}`);
+        let quantity = parseInt(quantityInput.text());
+        quantityInput.text(quantity + 1);
+        let cart = JSON.parse(localStorage.getItem('cart'))
+        cart.forEach(element => {
+            if (element.id === id) {
+                element.quan = quantityInput.text()
+            }
+        })
+        localStorage.setItem('cart', JSON.stringify(cart))
+        total()
+    }
 
-    // Add each cart item to the table
-    cartData.forEach(item => {
-        const row = document.createElement("tr");
-        const nameCell = document.createElement("td");
-        const priceCell = document.createElement("td");
-        const quantityCell = document.createElement("td");
-        const subtotalCell = document.createElement("td");
+    function decrement(id) {
+        const quantityInput = $(`#quantity${id}`);
+        let quantity = parseInt(quantityInput.text());
+        if (quantity > 1) {
+            quantityInput.text(quantity - 1);
+        }
+        let cart = JSON.parse(localStorage.getItem('cart'))
+        cart.forEach(element => {
+            if (element.id === id) {
+                element.quan = quantityInput.text()
+            }
+        })
+        localStorage.setItem('cart', JSON.stringify(cart))
+        total()
+    }
 
-        nameCell.innerText = item.name;
-        priceCell.innerText = item.price.toFixed(2);
-        quantityCell.innerText = item.quantity;
-        subtotalCell.innerText = (item.price * item.quantity).toFixed(2);
+    function render() {
+        $('#root').text('')
+        let cart = JSON.parse(localStorage.getItem('cart'))
 
-        row.appendChild(nameCell);
-        row.appendChild(priceCell);
-        row.appendChild(quantityCell);
-        row.appendChild(subtotalCell);
+        cart.forEach(element => {
+            let pattern = `
+            <tr id="${element.id}">
+                <td data-th="Product">
+                    <div class="row">
+                        <div class="d-none">${element.id}</div>
+                        <div class="col-md-3 text-left">
+                            <img src="${element.img}" width="250px" height="250px"
+                                style="object-fit: contain" alt=""
+                                class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                        </div>
+                        <div class="col-md-9 text-left mt-sm-2">
+                            <h4 style="text-transform: capitalize;">${element.name}</h4>
+                        </div>
+                    </div>
+                </td>
+                <td data-th="Price">${element.price}</td>
+                <td data-th="Quantity">
+                    <button class="btn btn-outline-dark" onclick="decrement('${element.id}')">-</button>
+                    <span id="quantity${element.id}" class="mx-2">${element.quan}</span>
+                    <button class="btn btn-outline-dark" onclick="increment('${element.id}')">+</button>
+                </td>
+                <td class="actions" data-th="">
+                    <div class="text-right">
+                        <button class="btn btn-white border-secondary bg-white btn-md mb-2" onclick="remove('${element.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `
+            $('#root').append(pattern)
+        });
+        total()
+    }
 
-        cartItemsEl.appendChild(row);
+    function total() {
+        let total = 0;
+        let cart = JSON.parse(localStorage.getItem('cart'))
 
-        cartTotal += item.price * item.quantity;
-    });
+        cart.forEach(element => {
+            total += parseInt(element.price.replace('.', '')) * element.quan
+        })
+        total = formatMoney(total)
+        $('#total').text(total + " VNĐ")
+    }
 
-    // Display total
-    cartTotalEl.innerText = cartTotal.toFixed(2);
+    function remove(tag) {
+        $(`#${tag}`).remove()
+        let cart = JSON.parse(localStorage.getItem('cart'))
+        cart = cart.filter((item) => {
+            return item.id !== tag;
+        })
+        localStorage.setItem('cart', JSON.stringify(cart))
+        total()
+    }
 
-    // Checkout button click handler
-    const checkoutButton = document.getElementById("checkout-button");
-    checkoutButton.addEventListener("click", () => {
-        // TODO: Add checkout logic here
-    });
+    $(document).ready(() => {
+        render()
+    })
+
+    window.onstorage = () => {
+        render()
+    }
+
 </script>

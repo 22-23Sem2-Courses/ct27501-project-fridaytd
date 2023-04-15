@@ -2,14 +2,15 @@
 
 namespace MVC\Controllers;
 
+
 class Tea extends \MVC\Core\Controller
 {
-    function Show()
+    public function Show()
     {
         $model = $this->model('Product');
-        $products = $model->getAllProducts();
-        var_dump($products);
+        $products = [];
         foreach ($model->getAllProducts() as $product) {
+            $product = $product->getProductInfor();
             if ($product['type'] === 'tea') {
                 $products[] = $product;
             }
@@ -19,4 +20,6 @@ class Tea extends \MVC\Core\Controller
             'products' => $products
         ]);
     }
+
+    
 }

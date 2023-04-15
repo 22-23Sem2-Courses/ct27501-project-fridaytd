@@ -4,8 +4,9 @@
             alt="...">
     </div>
     <div class="card-body ">
+        <div id="id<?= $product['id'] ?? '' ?>" class="d-none"><?= $product['id'] ?? '' ?></div>
         <h5 id="name<?= $product['id'] ?? '' ?>" class="card-title text-center"><?= $product['name'] ?? '' ?></h5>
-        <h5 id="price<?= $product['id'] ?? '' ?>" class="text-center my-3" style="color: #0C713D"><?= $product['price'] ?? '' ?></h5>
+        <h5 id="price<?= $product['id'] ?? '' ?>" class="text-center my-3 productPrice" style="color: #0C713D"><?= $product['price'] ?? '' ?></h5>
         <div class="d-flex justify-content-center">
             <button type="button" onclick="setValue(<?= $product['id'] ?? '' ?>)" class="btn button"
                 data-bs-toggle="modal" data-bs-target="#productModal">
