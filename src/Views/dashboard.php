@@ -251,7 +251,7 @@
             font: inherit;
             line-height: normal;
             cursor: pointer;
-            background: #E8474C;
+            background: #0c703d;
             color: white;
             font-weight: bold;
             width: auto;
@@ -486,7 +486,7 @@
                 location.href = '/admin';
             });
             $("#add-product").click(function (event) {
-                location.href = '/admin/ShowF/AddProduct';
+                location.href = '/admin/ShowF/Product';
             });
             $("#order").click(function (event) {
                 location.href = '/admin/ShowF/Order';

@@ -16,6 +16,17 @@ class Product
     private $price;
     private $image_path;
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
+
     public function getName()
     {
         return $this->name;
