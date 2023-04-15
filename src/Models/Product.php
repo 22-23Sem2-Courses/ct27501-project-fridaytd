@@ -60,6 +60,18 @@ class Product
         return $this;
     }
 
+    public function getProductInfor()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'type' => $this->type,
+            'des' => $this->des,
+            'price' => $this->price,
+            'image_path' => $this->image_path
+        ];
+    }
+
     public function __construct()
     {
         $this->pdo = PDOFactory::create();

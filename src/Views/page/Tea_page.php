@@ -23,7 +23,7 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
         <?php
-        for ($i = 0; $i < 30; $i++) {
+        foreach ($data['products'] as $product) {
             include('../src/Views/partition/Product_card.php');
         }
         ?>
