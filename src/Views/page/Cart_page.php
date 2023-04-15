@@ -24,12 +24,17 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-4 d-flex align-items-center">
-                <div class="col-sm-6 order-md-2 text-right">
-                    <a href="catalog.html" class="btn mb-4 btn-lg pl-5 pr-5"
-                        style="background-color: #0C713D; color: #ffffffff">Đặt hàng</a>
+            <form id="order-form" action="/Cart/Order" method="post">
+                <label for="address" class="form-label">Địa chỉ:</label>
+                <input id="address" name="address" type="text" class="form-control w-100" required>
+                <div class="row mt-4 d-flex align-items-center">
+                    <div class="col-sm-6 order-md-2 text-right">
+                        <input id="cart-infor" type="text" name="cart" class="d-none" value="">
+                        <button class="btn mb-4 btn-lg pl-5 pr-5"
+                            style="background-color: #0C713D; color: #ffffffff">Đặt hàng</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
 </div>
@@ -137,6 +142,16 @@
         localStorage.setItem('cart', JSON.stringify(cart))
         total()
     }
+
+    document.querySelector('#order-form').addEventListener('submit', (event) => {
+        event.preventDefault()
+        let cart = localStorage.getItem('cart');
+        $('#cart-infor').attr('value', cart)
+        if (cart !== "[]" && cart !== "" && cart !== null) {
+            document.querySelector('#order-form').submit()
+            // console.log(cart);
+        }
+    })
 
     $(document).ready(() => {
         render()

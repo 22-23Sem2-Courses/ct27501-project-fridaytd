@@ -97,4 +97,11 @@ class User extends \MVC\Core\Controller
             }
         }
     }
+
+    public function Order()
+    {
+        $this->view('user', [
+            'page' => 'OrderUser'
+        ]);
+    }
 }

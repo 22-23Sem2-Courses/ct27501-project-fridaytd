@@ -106,6 +106,7 @@ class User
                 'phone' => $this->phone,
                 'password_hash' => $this->password_hash
             ]);
+            $this->id = $this->pdo->lastInsertId();
         }
 
     }

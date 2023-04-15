@@ -100,18 +100,18 @@
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
+                            <a class="nav-link active" aria-current="page" href="/User/Profile">
                                 <span data-feather="home" class="align-text-bottom"></span>
                                 Profile
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/User/Order">
                                 <span data-feather="file" class="align-text-bottom"></span>
                                 Orders
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
                                 Products
@@ -134,13 +134,13 @@
                                 <span data-feather="layers" class="align-text-bottom"></span>
                                 Integrations
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
 
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="min-height: 600px">
                 <?php if (file_exists('../src/Views/page/' . $data['page'] . '_page.php')) {
 
                     include '../src/Views/page/' . $data['page'] . '_page.php';
