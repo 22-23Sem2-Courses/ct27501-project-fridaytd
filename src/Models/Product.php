@@ -104,15 +104,14 @@ class Product
         return $product;
     }
 
-    public function addProduct($name, $type, $description, $price, $image_path)
+    public function addProduct($name, $type, $price, $image_path, $description)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO {$this->table_name} (name,type, description, price, image_path) VALUES (:name,:type, :description, :price, :image_path)");
+        $stmt = $this->pdo->prepare("INSERT INTO {$this->table_name} (name,type, price, image_path, description) VALUES (:name, :type, :price, :image_path, :description)");
         $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':type', $name);
-        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':type', $type);
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':image_path', $image_path);
-        var_dump(2);
+        $stmt->bindParam(':description', $description);
         return $stmt->execute();
     }
 

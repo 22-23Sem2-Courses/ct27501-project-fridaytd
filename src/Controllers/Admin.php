@@ -32,25 +32,25 @@ class Admin extends \MVC\Core\Controller
 
     public function fillFromForm()
     {
-        if (isset($_POST['name']) && isset($_POST['type']) && isset($_POST['description']) && isset($_POST['price']) && isset($_FILES['image'])) {
+        
+        // die();
+        if (isset($_POST['name']) && isset($_POST['type']) && isset($_POST['description']) && isset($_POST['price']) && isset($_POST['image_path'])) {
+            // var_dump($_POST['name']);
+            // var_dump($_POST['type']);
+            // var_dump($_POST['description']);
+            // var_dump($_POST['price']);
+            // var_dump($_POST['image_path']);
             // Get user input and upload image file
             $name = $_POST['name'];
-            echo $_POST['name'];
-            echo $_POST['type'];
-            echo $_POST['description'];
-            echo $_POST['price'];
-            echo $_POST['image_path'];
-            var_dump(1);
-            die();
             $type = $_POST['type'];
             $description = $_POST['description'];
             $price = $_POST['price'];
-            $image_path = uploadImage($_FILES['image']);
+            $image_path = $_POST['image_path'];
             // Add new product to database
-            $this->product = new Product();
-            $this->product->addProduct($name, $type, $price, $des, $image_path);
+            $this->addProduct($name, $type, $price, $image_path, $description);
+            header('Location: ' . '/Admin/ShowF/AddProduct');
         }
-        
+
     }
 
 }
