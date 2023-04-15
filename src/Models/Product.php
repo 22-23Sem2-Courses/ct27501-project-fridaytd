@@ -142,7 +142,7 @@ class Product
     {
         $stmt = $this->pdo->prepare("INSERT INTO {$this->table_name} (name,type, description, price, image_path) VALUES (:name,:type, :description, :price, :image_path)");
         $stmt->bindParam(':name', $this->name);
-        $stmt->bindParam(':type', $this->name);
+        $stmt->bindParam(':type', $this->type);
         $stmt->bindParam(':description', $this->des);
         $stmt->bindParam(':price', $this->price);
         $stmt->bindParam(':image_path', $this->image_path);
@@ -151,14 +151,15 @@ class Product
 
     public function updateProduct($id, $name, $type, $description, $price, $image_path)
     {
-        $stmt = $this->pdo->prepare("UPDATE {$this->table_name} SET name=:name, type=:type , description=:description, price=:price, image_path=:image_path WHERE id=:id");
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':type', $name);
-        $stmt->bindParam(':description', $description);
-        $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':image_path', $image_path);
-        return $stmt->execute();
+        var_dump($id);
+        var_dump($name);
+        var_dump($type);
+        var_dump($description);
+        var_dump($image_path);
+        var_dump($price);
+        $sql = "UPDATE products SET name=?, type=? , description=?, price=?, image_path=? WHERE id=?";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([$name, $type, $description, $price, $image_path, $id]);
     }
 
     public function deleteProduct($id)
