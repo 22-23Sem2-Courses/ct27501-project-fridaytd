@@ -39,7 +39,7 @@
         <p class='field half'>
             <input class='button' type='submit' value='Send'>
         </p>
-    </form>
+    </form> 
 </div>
 
 

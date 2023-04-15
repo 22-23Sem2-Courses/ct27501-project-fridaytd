@@ -99,7 +99,7 @@ html {
 }
 
 body {
-  background-color: #111111;
+  background-color: #000000;
   font-family: "Titillium Web", sans-serif;
 }
 
@@ -277,7 +277,7 @@ body {
   font: inherit;
   line-height: normal;
   cursor: pointer;
-  background: #E8474C;
+  background: #0c703d;
   color: white;
   font-weight: bold;
   width: auto;
