@@ -1,5 +1,5 @@
 <div id="padtop">
-    <form action='/Admin/fillFromForm' method="POST" class='form'>
+    <form action='/Admin/fillFromForm' method="POST" class='form' enctype="multipart/form-data">
         <p class='field required'>
             <label class='label required' for='name'>TÊN SẢN PHẨM</label>
             <input class='text-input' id='name' name='name' required type='text' placeholder='Ô Long'>
@@ -30,12 +30,11 @@
             <input class='number' id='price' name='price' type='phone'>
         </p>
         <p class='field half'>
-            <label class='label' for='image_path'>Image Path</label>
-            <input class='text-input' id='image_path' name='image_path' type='text'>
+            <label class='label' for='image_path'>Image</label>
+            <input class='text-input' id='image' name='image' type='file' onchange="previewImage()">
         </p>
         <p class='field half'>
-            <button onclick="showImage()" type='button'>Show Image</button>
-            <img id="my-image" src="#" alt="Image">
+            <img id="my-image" src="#" alt="Image" width="100px">
         </p>
         <p class='field half'>
             <input class='button' type='submit' value='Send'>
@@ -43,10 +42,22 @@
     </form>
 </div>
 
+
+
 <script>
-    function showImage() {
-        var imagePath = document.getElementById("image-path").value;
-        var image = document.getElementById("my-image");
-        image.src = imagePath;
+    function previewImage() {
+        var preview = document.querySelector('#my-image');
+        var file = document.querySelector('#image').files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
     }
 </script>

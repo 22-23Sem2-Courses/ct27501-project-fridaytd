@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row w-100">
                 <div class="col-lg-12 col-md-12 col-12">
-                    <h3 class="display-5 mb-2 text-center">Giỏ hàng</h3>
+                    <h3 class="display-5 mb-2 text-center">GIỎ HÀNG</h3>
                     <table id="shoppingCart" class="table table-condensed table-responsive">
                         <thead>
                             <tr>
