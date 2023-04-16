@@ -46,17 +46,25 @@ class Order
 		return $this;
 	}
 
-	// public function setItems($items)
-	// {
-	// 	$this->items = $items;
-	// 	return $this;
-	// }
+	public function setItems($items)
+	{
+		$this->items = $items;
+		return $this;
+	}
 
 	public function setItemsById($id)
 	{
 		$this->items = [];
 		$orderItems = new Order_Items();
 		$this->items = $orderItems->getByOrderID($id);
+		return $this->items;
+	}
+
+	public function fetchItems() 
+	{
+		$this->items = [];
+		$orderItems = new Order_Items();
+		$this->items = $orderItems->getByOrderID($this->order_id);
 		return $this->items;
 	}
 
