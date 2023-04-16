@@ -70,7 +70,7 @@ $products = $product->getAllProducts();
                         <p class="mb-5 text-center">
                             There are <i class="text-info font-weight-bold">
                                 <?php echo count($products); ?>
-                            </i> products in your database;
+                            </i> products in your database
                         </p>
                         <table id="shoppingCart" class="table table-condensed table-responsive">
                             <thead>
@@ -86,7 +86,7 @@ $products = $product->getAllProducts();
                                 <?php
 
                                 foreach ($products as $item) {
-                                    echo "<tr>";
+                                    echo "<tr id=product". $item->getId() .">";
                                     echo '<td data-th="' . $item->getName() . '">';
                                     echo '<div class="row">';
                                     echo '<div class="col-md-3 text-left">';
@@ -103,7 +103,7 @@ $products = $product->getAllProducts();
                                     echo '</td>';
                                     echo '<td class="actions" data-th="">';
                                     echo '<div class="text-right">';
-                                    echo '<button class="btn btn-white border-secondary bg-white btn-md mb-2" onclick="openForm()">';
+                                    echo '<button class="btn btn-white border-secondary bg-white btn-md mb-2" onclick="edit()">';
                                     echo ' <i class="fas fa-sync"></i>';
                                     echo '</button>';
                                     echo '<button class="btn btn-white border-secondary bg-white btn-md mb-2">';
@@ -231,6 +231,10 @@ $products = $product->getAllProducts();
         } else {
             preview.src = "";
         }
+    }
+
+    function edit() {
+        location.href = "/Admin/ShowProductById/1";
     }
 
 </script>
