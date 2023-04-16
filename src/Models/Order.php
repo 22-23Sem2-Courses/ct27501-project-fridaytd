@@ -127,4 +127,16 @@ class Order
 	{
 		return $this->items;
 	}
+
+	public function getStatusString()
+	{
+		switch ($this->status) {
+			case 0:
+				return 'Đang chờ';
+			case 1:
+				return 'Đang giao';
+			case 2:
+				return 'Đã giao';
+		}
+	}
 }

@@ -21,5 +21,5 @@ class Tea extends \MVC\Core\Controller
         ]);
     }
 
-    
+
 }

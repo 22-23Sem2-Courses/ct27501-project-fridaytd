@@ -13,7 +13,9 @@
                             <?= $order->getTotal() ?>
                         </span>
                     </h5>
-                    <h6 class="col-md-3">Trạng thái:</h6>
+                    <h6 class="col-md-3">Trạng thái:
+                        <?= $order->getStatusString() ?>
+                    </h6>
                 </div>
             </div>
         </button>
