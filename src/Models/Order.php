@@ -11,8 +11,7 @@ class Order
 	private $order_id;
 	private $customer_id;
 	private $status;
-	private $address;
-	private $items;
+	private $address;private $items;
 
 
 	public function __construct()
@@ -47,10 +46,18 @@ class Order
 		return $this;
 	}
 
-	public function setItems($items)
+	// public function setItems($items)
+	// {
+	// 	$this->items = $items;
+	// 	return $this;
+	// }
+
+	public function setItemsById($id)
 	{
-		$this->items = $items;
-		return $this;
+		$this->items = [];
+		$orderItems = new Order_Items();
+		$this->items = $orderItems->getByOrderID($id);
+		return $this->items;
 	}
 
 	public function getOrderInfor()

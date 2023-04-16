@@ -76,4 +76,17 @@ class Order_Items
         }
         return $items;
     }
+
+    public function getAllOrder()
+    {
+        $items = [];
+        $stm = $this->pdo->prepare("SELECT * FROM order_items");
+        $stm->execute();
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $item = new Order_Items();
+            $item->fillFromDB($row);
+            $items[] = $item;
+        }
+        return $items;
+    }
 }
