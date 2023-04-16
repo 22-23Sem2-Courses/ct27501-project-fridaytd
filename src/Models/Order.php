@@ -12,6 +12,7 @@ class Order
 	private $customer_id;
 	private $status;
 	private $address;
+	private $items;
 
 
 	public function __construct()
@@ -43,6 +44,12 @@ class Order
 	public function setUser_id($user_id): self
 	{
 		$this->customer_id = $user_id;
+		return $this;
+	}
+
+	public function setItems($items)
+	{
+		$this->items = $items;
 		return $this;
 	}
 
@@ -89,4 +96,18 @@ class Order
 		return $this;
 	}
 
+	public function getByCustomerID($customer_id)
+	{
+		$orders = [];
+		$stm = $this->pdo->prepare("SELECT * FROM orders WHERE customer_id = :customer_id");
+		$stm->execute([
+			'customer_id' => $customer_id
+		]);
+		while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+			$order = new Order();
+			$order->fillFromDB($row);
+			$orders[] = $order;
+		}
+		return $orders;
+	}
 }

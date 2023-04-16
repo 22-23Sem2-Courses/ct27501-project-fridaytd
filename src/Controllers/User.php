@@ -100,8 +100,14 @@ class User extends \MVC\Core\Controller
 
     public function Order()
     {
+        $orders = $this->model('Order')->getByCustomerID($_SESSION['user_id']);
+        foreach ($orders as $order) {
+            $items = $this->model('Order_Items')->getByOrderID($order->getOrderInfor()['order_id']);
+            $order->setItems($items);
+        }
         $this->view('user', [
-            'page' => 'OrderUser'
+            'page' => 'OrderUser',
+            'orders' => $orders
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace MVC\Models;
 
 use \MVC\Core\PDOFactory;
+use PDO;
 
 class Order_Items
 {
@@ -38,7 +39,7 @@ class Order_Items
         return $this;
     }
 
-    public function fillFormDB($order_items)
+    public function fillFromDB($order_items)
     {
         [
             'id' => $this->id,
@@ -59,5 +60,20 @@ class Order_Items
             'quantity' => $this->quantity
         ]);
         return $this;
+    }
+
+    public function getByOrderID($order_id)
+    {
+        $items = [];
+        $stm = $this->pdo->prepare("SELECT * FROM order_items WHERE order_id = :order_id");
+        $stm->execute([
+            'order_id' => $order_id
+        ]);
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $item = new Order_Items();
+            $item->fillFromDB($row);
+            $items[] = $item;
+        }
+        return $items;
     }
 }

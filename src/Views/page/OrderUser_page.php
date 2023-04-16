@@ -7,3 +7,9 @@
         </div>
     </div>
 </div>
+
+<?php
+echo "<pre>";
+var_dump($data['orders']);
+echo "</pre>";
+?>
