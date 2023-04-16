@@ -178,11 +178,6 @@ $products = $product->getAllProducts();
 
     </div>
 
-    <div id="Tokyo" class="tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
-    </div>
-
     
 </div>
 <script>

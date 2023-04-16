@@ -70,7 +70,7 @@ class User
 
         return $this;
     }
-    public static function getAll()
+    public static function getAllUser()
     {
         $users = [];
 

@@ -34,6 +34,14 @@ class Admin extends \MVC\Core\Controller
         ]);
     }
 
+    function ShowCheckOrder($id)
+    {
+        $this->view('dashboard', [
+            'page' => 'CheckProduct',
+            'id' => $id
+        ]);
+    }
+
     function DeleteProductById($id) 
     {
         $this->product = new Product();

@@ -11,7 +11,8 @@ class Order
 	private $order_id;
 	private $customer_id;
 	private $status;
-	private $address;private $items;
+	private $address;
+	private $items;
 
 
 	public function __construct()
@@ -19,9 +20,18 @@ class Order
 		$this->pdo = PDOFactory::create();
 	}
 
-	function getOrderById($id)
+	function getOrderById($order_id)
 	{
 
+		$stm = $this->pdo->prepare("SELECT * FROM orders WHERE order_id = :order_id");
+		$stm->execute([
+			'order_id' => $order_id
+		]);
+		$order = new Order();
+		while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+			$order->fillFromDB($row);
+		}
+		return $order;
 	}
 
 	public function getId()
@@ -60,7 +70,7 @@ class Order
 		return $this->items;
 	}
 
-	public function fetchItems() 
+	public function fetchItems()
 	{
 		$this->items = [];
 		$orderItems = new Order_Items();
@@ -126,6 +136,19 @@ class Order
 		return $orders;
 	}
 
+	public function getAllOrder()
+	{
+		$orders = [];
+		$stm = $this->pdo->prepare("SELECT * FROM orders");
+		$stm->execute();
+		while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+			$order = new Order();
+			$order->fillFromDB($row);
+			$orders[] = $order;
+		}
+		return $orders;
+	}
+
 	public function getTotal()
 	{
 		$total = 0;
@@ -153,5 +176,61 @@ class Order
 			case 2:
 				return 'Đã giao';
 		}
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCustomer_id()
+	{
+		return $this->customer_id;
+	}
+
+	public function getCustomerName()
+	{
+		$sql = "SELECT customer.name 
+        FROM customer 
+        INNER JOIN order 
+        ON users.id = orders.customer_id 
+        WHERE users.id = :customer_id";
+
+		$stmt = $this->pdo->prepare($sql);
+		$stmt->bindParam(':customer_id', $this->customer_id, PDO::PARAM_INT);
+		$stmt->execute();
+
+		if ($stmt->rowCount() > 0) {
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			$customer_name = $row["name"];
+			return $customer_name;
+		}
+	}
+
+
+	/**
+	 * @param mixed $customer_id 
+	 * @return self
+	 */
+	public function setCustomer_id($customer_id): self
+	{
+		$this->customer_id = $customer_id;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getOrder_id()
+	{
+		return $this->order_id;
+	}
+
+	/**
+	 * @param mixed $order_id 
+	 * @return self
+	 */
+	public function setOrder_id($order_id): self
+	{
+		$this->order_id = $order_id;
+		return $this;
 	}
 }
