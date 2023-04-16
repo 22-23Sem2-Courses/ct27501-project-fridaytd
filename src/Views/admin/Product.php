@@ -84,7 +84,7 @@ $products = $product->getAllProducts();
                             <tbody>
 
                                 <?php
-
+                                $sum = 0;
                                 foreach ($products as $item) {
                                     echo "<tr id=product". $item->getId() .">";
                                     echo '<td data-th="' . $item->getName() . '">';
@@ -103,35 +103,24 @@ $products = $product->getAllProducts();
                                     echo '</td>';
                                     echo '<td class="actions" data-th="">';
                                     echo '<div class="text-right">';
-                                    echo '<button class="btn btn-white border-secondary bg-white btn-md mb-2" onclick="edit()">';
+                                    echo '<button class="btn btn-white border-secondary bg-white btn-md mb-2" onclick="edit(' . $item->getId() . ')">';
                                     echo ' <i class="fas fa-sync"></i>';
                                     echo '</button>';
-                                    echo '<button class="btn btn-white border-secondary bg-white btn-md mb-2">';
+                                    echo '<button class="btn btn-white border-secondary bg-white btn-md mb-2" onclick="deleteProduct('. $item->getId() .')">';
                                     echo ' <i class="fas fa-trash"></i>';
                                     echo '</button>';
                                     echo '</div>';
                                     echo '</td>';
                                     echo '</tr>';
+                                    $sum += $item->getPrice();
                                 }
                                 ?>
 
                             </tbody>
                         </table>
-                        <div class="float-right text-right">
-                            <h4>Subtotal:</h4>
-                            <h1>$99.00</h1>
-                        </div>
                     </div>
                 </div>
-                <div class="row mt-4 d-flex align-items-center">
-                    <div class="col-sm-6 order-md-2 text-right">
-                        <a href="catalog.html" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Checkout</a>
-                    </div>
-                    <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
-                        <a href="catalog.html">
-                            <i class="fas fa-arrow-left mr-2"></i> Continue Shopping</a>
-                    </div>
-                </div>
+                
             </div>
         </section>
 
@@ -233,8 +222,17 @@ $products = $product->getAllProducts();
         }
     }
 
-    function edit() {
-        location.href = "/Admin/ShowProductById/1";
+    function edit(id) {
+        location.href = "/Admin/ShowProductById/" + id;
     }
+
+    function deleteProduct(id) {
+        let base = "/Admin/ShowF/Product";
+        
+        window.open("/Admin/DeleteProductById/" + id);
+        
+        location.href = base;
+    }
+
 
 </script>

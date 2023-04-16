@@ -34,6 +34,12 @@ class Admin extends \MVC\Core\Controller
         ]);
     }
 
+    function DeleteProductById($id) 
+    {
+        $this->product = new Product();
+        $this->product->deleteProduct($id);
+        //header('Location: ' . '/Admin/ShowF/Product');
+    }
 
     function addProduct($name, $type, $price, $des, $image_path)
     {
