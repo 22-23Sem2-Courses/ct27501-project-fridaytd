@@ -110,4 +110,21 @@ class Order
 		}
 		return $orders;
 	}
+
+	public function getTotal()
+	{
+		$total = 0;
+
+		foreach ($this->items as $item) {
+			$product = (new \MVC\Models\Product())->getProductById($item->getOrderItemsInfor()['product_id']);
+			$total += $product->getProductInfor()['price'];
+		}
+
+		return $total;
+	}
+
+	public function getItems()
+	{
+		return $this->items;
+	}
 }

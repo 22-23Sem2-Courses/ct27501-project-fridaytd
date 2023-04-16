@@ -68,7 +68,7 @@
             -webkit-overflow-scrolling: touch;
         }
     </style>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 </head>
 
@@ -99,14 +99,14 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/User/Profile">
+                        <li class="nav-item" style="color: #0C713D">
+                            <a class="nav-link active" style="color: #0C713D" aria-current="page" href="/User/Profile">
                                 <span data-feather="home" class="align-text-bottom"></span>
                                 Profile
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/User/Order">
+                        <li class="nav-item" style="color: #0C713D">
+                            <a class="nav-link" style="color: #0C713D" href="/User/Order">
                                 <span data-feather="file" class="align-text-bottom"></span>
                                 Orders
                             </a>

@@ -3,6 +3,7 @@
         if (typeof money === 'number' && Number.isInteger(money)) {
             money = money.toString()
         }
+        money = money.trim();
         pos = 3;
         while (pos < money.length) {
             money = money.slice(0, -pos) + '.' + money.slice(-pos, money.length)
