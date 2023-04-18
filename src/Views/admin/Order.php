@@ -49,54 +49,54 @@ $OrderItem = new Order_Items();
     #edit-product {
         background-color: white;
     }
-
-    
 </style>
 
 
 <div id="edit-product-div">
-   
 
 
-        <section class="pt-5 pb-5" id='edit-product'>
-            <div class="container">
-                <div class="row w-100">
-                    <div class="col-lg-12 col-md-12 col-12">
-                        <p class="mb-5 text-center">
-                            There are <i class="text-info font-weight-bold">
-                                <?php echo count($orders); ?>
-                            </i> orders in your database
-                        </p>
-                        <table id="shoppingCart" class="table table-condensed table-responsive">
-                            <thead>
-                                <tr>
-                                    <th scope="col" style="width:20%">ORDER ID</th>
-                                    <th scope="col" style="width:20%">CUSTOMER NAME</th>
-                                    <th scope="col" style="width:20%">STATUS</th>
-                                    <th scope="col" style="width:20%"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
 
-                                <?php
-                                foreach ($orders as $item) {
-                                    echo "<tr>";
-                                    echo '<td scope="col" style="width:40%">' . $item->getOrder_id() . '</td>';
-                                    echo '<td scope="col" style="width:40%">' . $item->getCustomer_id() . '</td>';
-                                    echo '<td scope="col" style="width:20%">' . $item->getStatusString() . '</td>';
-                                    echo '<td scope="col" style="width:20%">' . '<button onclick="edit('. $item->getOrder_id() .')">Check</button>' . '</td>';
-                                    echo '</tr>';
-                                }
-                                ?>
+    <section class="pt-5 pb-5" id='edit-product'>
+        <div class="container">
+            <div class="row w-100">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <p class="mb-5 text-center">
+                        There are <i class="text-info font-weight-bold">
+                            <?php echo count($orders); ?>
+                        </i> orders in your database
+                    </p>
+                    <table id="shoppingCart" class="table table-condensed table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width:20%">ORDER ID</th>
+                                <th scope="col" style="width:20%">CUSTOMER NAME</th>
+                                <th scope="col" style="width:20%">STATUS</th>
+                                <th scope="col" style="width:20%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                            
-                            </tbody>
-                        </table>
-                    </div>
+                            <?php
+                            foreach ($orders as $item) {
+                                echo "<tr>";
+                                echo '<td scope="col" style="width:40%">' . $item->getOrder_id() . '</td>';
+                                echo '<td scope="col" style="width:40%">' . $item->getCustomerName() . '</td>';
+                                echo '<td scope="col" style="width:20%">' . $item->getStatusString() . '</td>';
+                                echo '<td scope="col" style="width:20%">';
+                                echo '<form action="/Admin/changeOrderStatus/'. $item->getOrder_id() .'/'. $item->getStatus() .'" method="get">
+                                <input type="submit" value="Check">
+                                </form></td>';
+                                echo '</tr>';
+                            }
+                            ?>
+
+                        </tbody>
+                    </table>
                 </div>
-                
             </div>
-        </section>
+
+        </div>
+    </section>
 </div>
 <script>
     function openTab(evt, cityName) {
@@ -119,12 +119,13 @@ $OrderItem = new Order_Items();
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
     }
+
     function previewImage() {
         var preview = document.querySelector('#my-image');
         var file = document.querySelector('#image').files[0];
         var reader = new FileReader();
 
-        reader.onloadend = function () {
+        reader.onloadend = function() {
             preview.src = reader.result;
         }
 
@@ -136,19 +137,14 @@ $OrderItem = new Order_Items();
     }
 
     function edit(id) {
-        location.href = "/Admin/ShowCheckOrder/" + id;
+        location.href = "/Order/ShowCheckOrder/" + id;
     }
 
     // function deleteProduct(id) {
     //     let base = "/Admin/ShowF/Product";
-        
+
     //     window.open("/Admin/DeleteProductById/" + id);
-        
+
     //     location.href = base;
     // }
-
-
 </script>
-
-
-

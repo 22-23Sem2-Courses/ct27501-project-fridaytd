@@ -175,6 +175,8 @@ class Order
 				return 'Đang giao';
 			case 2:
 				return 'Đã giao';
+			case 3:
+				return 'Đã huỷ';
 		}
 	}
 
@@ -186,25 +188,44 @@ class Order
 		return $this->customer_id;
 	}
 
+	public function getStatus()
+	{
+		return $this->status;
+	}
+
 	public function getCustomerName()
 	{
-		$sql = "SELECT customer.name 
-        FROM customer 
-        INNER JOIN order 
+		$sql = "SELECT users.fullname 
+        FROM users 
+        INNER JOIN orders 
         ON users.id = orders.customer_id 
         WHERE users.id = :customer_id";
 
 		$stmt = $this->pdo->prepare($sql);
-		$stmt->bindParam(':customer_id', $this->customer_id, PDO::PARAM_INT);
+		$stmt->bindParam(':customer_id', $this->customer_id);
 		$stmt->execute();
 
 		if ($stmt->rowCount() > 0) {
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
-			$customer_name = $row["name"];
+			$customer_name = $row["fullname"];
 			return $customer_name;
 		}
 	}
 
+	function changeStatus($order_id, $status) 
+    {
+        if($status < 3) {
+			$status = $status + 1;
+		} else {
+			$status = 0;
+		}
+		$sql = "UPDATE orders SET status = :status WHERE order_id = :order_id";
+		$stmt = $this->pdo->prepare($sql);
+		$stmt->bindParam(':status', $status);
+		$stmt->bindParam(':order_id', $order_id);
+		$stmt->execute();
+		header('Location: ' . '/admin/ShowF/Order');
+    }
 
 	/**
 	 * @param mixed $customer_id 
