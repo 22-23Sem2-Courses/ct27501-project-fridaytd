@@ -394,7 +394,7 @@
         </button>
         <div class=" w-100 rounded-0 border-0">
             <span style="color: #ffffffff; font-size: 20px" class="me-2 ms-2">Xin chào,
-                <?= $_SESSION['user_fullname'] ?? '' ?>
+                admin
             </span>
         </div>
         <div class="navbar-nav">
@@ -423,7 +423,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" id="add-product">
-                                <span data-feather="shopping-cart" class="align-text-bottom" ></span>
+                                <span data-feather="shopping-cart" class="align-text-bottom"></span>
                                 Products
                             </a>
                         </li>
