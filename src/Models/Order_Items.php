@@ -89,4 +89,36 @@ class Order_Items
         }
         return $items;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getProduct_id() {
+		return $this->product_id;
+	}
+	
+	/**
+	 * @param mixed $product_id 
+	 * @return self
+	 */
+	public function setProduct_id($product_id): self {
+		$this->product_id = $product_id;
+		return $this;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getQuantity() {
+		return $this->quantity;
+	}
+	
+	/**
+	 * @param mixed $quantity 
+	 * @return self
+	 */
+	public function setQuantity($quantity): self {
+		$this->quantity = $quantity;
+		return $this;
+	}
 }

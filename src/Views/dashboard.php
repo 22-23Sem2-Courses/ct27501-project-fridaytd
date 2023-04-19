@@ -428,23 +428,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="#" id="customer">
                                 <span data-feather=" users" class="align-text-bottom"></span>
                                 Customers
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather=" bar-chart-2" class="align-text-bottom"></span>
-                                Reports
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather=" layers" class="align-text-bottom"></span>
-                                Integrations
-                            </a>
-                        </li>
+
                     </ul>
 
                 </div>
@@ -490,6 +479,9 @@
             });
             $("#order").click(function (event) {
                 location.href = '/admin/ShowF/Order';
+            });
+            $("#customer").click(function (event) {
+                location.href = '/admin/ShowF/Customer';
             });
         });
     </script>

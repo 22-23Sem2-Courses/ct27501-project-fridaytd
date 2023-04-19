@@ -2,13 +2,14 @@
 
 namespace MVC\Controllers;
 
+use MVC\Models\Order;
 use MVC\Models\Product;
 
 class Admin extends \MVC\Core\Controller
 {
     private $product;
     private $user;
-    private $other;
+    private $order;
 
     function Show()
     {
@@ -34,6 +35,15 @@ class Admin extends \MVC\Core\Controller
         ]);
     }
 
+    function ShowCheckOrder($id)
+    {
+        $this->view('dashboard', [
+            'page' => 'CheckProduct',
+            'id' => $id
+        ]);
+    }
+
+   
     function DeleteProductById($id) 
     {
         $this->product = new Product();
@@ -111,5 +121,11 @@ class Admin extends \MVC\Core\Controller
             header('Location: ' . '/Admin/ShowF/AddProduct');
         }
 
+    }
+
+    public function changeOrderStatus($order_id, $status) 
+    {
+        $this->order = new Order();
+        $this->order->changeStatus($order_id, $status);
     }
 }

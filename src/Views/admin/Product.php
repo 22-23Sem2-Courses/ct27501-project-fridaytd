@@ -56,7 +56,6 @@ $products = $product->getAllProducts();
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'EditProduct')">Edit Product</button>
         <button class="tablinks" onclick="openTab(event, 'AddProduct')">Add Product</button>
-        <button class="tablinks" onclick="openTab(event, 'Tokyo')">Tokyo</button>
     </div>
 
     <!-- Tab content -->
@@ -176,11 +175,6 @@ $products = $product->getAllProducts();
 
 
 
-    </div>
-
-    <div id="Tokyo" class="tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
     </div>
 
     
