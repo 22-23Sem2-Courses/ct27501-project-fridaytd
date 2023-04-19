@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5" style="min-height: 560px;">
     <section class="pt-5 pb-5">
         <div class="container">
             <div class="row w-100">

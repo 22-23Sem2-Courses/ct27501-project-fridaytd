@@ -86,7 +86,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <p><b>Trụ sở chính:</b> Công ty Cổ Phần Phúc Long Heritage - ĐKKD: 0316 871719
+                        <p><b>Trụ sở chính:</b> Công ty Cổ Phần Dang Tin Heritage - ĐKKD: 0316 871719
                             do sở KHĐT TPHCM cấp lần đầu ngày 21/05/2021</p>
                         <p><b>Nhà máy:</b> D_8D_CN Đường XE 1, Khu Công Nghiệp Mỹ Phước III, phường Mỹ Phước, thị xã Bến
                             Cát, tỉnh Bình Dương, Việt Nam</p>

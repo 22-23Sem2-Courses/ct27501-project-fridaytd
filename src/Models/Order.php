@@ -11,7 +11,8 @@ class Order
 	private $order_id;
 	private $customer_id;
 	private $status;
-	private $address;private $items;
+	private $address;
+	private $items;
 
 
 	public function __construct()
@@ -60,7 +61,7 @@ class Order
 		return $this->items;
 	}
 
-	public function fetchItems() 
+	public function fetchItems()
 	{
 		$this->items = [];
 		$orderItems = new Order_Items();
@@ -131,7 +132,8 @@ class Order
 		$total = 0;
 
 		foreach ($this->items as $item) {
-			$product = (new \MVC\Models\Product())->getProductById($item->getOrderItemsInfor()['product_id']);
+			$product = (new \MVC\Models\Product());
+			$product = $product->getProductById($item->getOrderItemsInfor()['product_id']);
 			$total += $product->getProductInfor()['price'];
 		}
 
