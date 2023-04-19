@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>User</title>
+    <title>Admin</title>
 
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
