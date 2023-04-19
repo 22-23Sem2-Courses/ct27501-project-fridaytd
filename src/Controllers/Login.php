@@ -36,7 +36,11 @@ class Login extends \MVC\Core\Controller
                     $_SESSION['islogin'] = 1;
                     $_SESSION['user_id'] = $user->getId();
                     $_SESSION['user_fullname'] = $user->getFullName();
-                    echo '<script>alert("Đăng nhập thành công");setTimeout(function(){window.location.href="/Home";}, 1000);</script>';
+                    if ($value['username'] === 'admin') {
+                        echo '<script>alert("Đăng nhập admin thành công");setTimeout(function(){window.location.href="/admin/ShowF/Order";}, 1000);</script>';
+                    } else {
+                        echo '<script>alert("Đăng nhập thành công");setTimeout(function(){window.location.href="/Home";}, 1000);</script>';
+                    }
                 } else {
                     $this->view('template', [
                         'page' => 'Login',
