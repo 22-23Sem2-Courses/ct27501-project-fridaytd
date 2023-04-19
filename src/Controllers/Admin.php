@@ -99,9 +99,7 @@ class Admin extends \MVC\Core\Controller
 
     public function editFromForm($id)
     {
-
-        // die();
-        if (isset($_POST['name']) && isset($_POST['type']) && isset($_POST['description']) && isset($_POST['price']) && isset($_FILES['image'])) {
+        if (isset($_POST['name']) && isset($_POST['type']) && isset($_POST['description']) && isset($_POST['price'])) {
             $name = $_POST['name'];
             $type = $_POST['type'];
             $description = $_POST['description'];
@@ -117,7 +115,7 @@ class Admin extends \MVC\Core\Controller
             move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir . $new_filename);
             $image_path = '/images/Uploads/' . $new_filename;
             // Add new product to database
-            $this->editProduct($id, $name, $type, $price, $image_path, $description);
+            $this->editProduct($id, $name, $type, $description, $price, $image_path);
             header('Location: ' . '/Admin/ShowF/AddProduct');
         }
 

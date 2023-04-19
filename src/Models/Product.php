@@ -4,6 +4,7 @@ namespace MVC\Models;
 
 use PDO;
 use MVC\Core\PDOFactory;
+use MVC\Core\Router;
 
 class Product
 {
@@ -151,15 +152,11 @@ class Product
 
     public function updateProduct($id, $name, $type, $description, $price, $image_path)
     {
-        var_dump($id);
-        var_dump($name);
-        var_dump($type);
-        var_dump($description);
-        var_dump($image_path);
-        var_dump($price);
         $sql = "UPDATE products SET name=?, type=? , description=?, price=?, image_path=? WHERE id=?";
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$name, $type, $description, $price, $image_path, $id]);
+        $stmt->execute([$name, $type, $description, $price, $image_path, $id]);
+        header("location" . "/Admin/ShowF/Product");
+        
     }
 
     public function deleteProduct($id)
